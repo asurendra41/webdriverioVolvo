@@ -54,7 +54,7 @@ npm run test
 
 If you like to run specific test files you can add a --spec parameter:
 
-npx wdio run ./wdio.conf.js --spec <sepcfile>.js
+npx wdio run ./wdio.conf.js --spec <<sepcfile>>.js
 
 note: for parallel execution, uncomment the browser capabilties for other browsers in wdio.config.js 
 
@@ -62,7 +62,7 @@ Reports
 =======
 install allure reports by using:  npm install @wdio/allure-reporter --save-dev
 
-please check this link for more details [Aluure reports](https://webdriver.io/docs/allure-reporter)
+please check this link for more details [Allure reports](https://webdriver.io/docs/allure-reporter)
 
 After execution please check allure results folder. Install the Allure command-line tool, and process the results directory using :
 
@@ -74,6 +74,6 @@ Execution via Docker Image
 
 **Dockerfile from the root directory will create an docker image on any name specified, run that docker image for execution**
 
-Command to create docker image : **docker build -t <ImageName> .**
+Command to create docker image : **docker build -t ImageName .**
 
-Command to execute docker image: **docker run -it <ImageName>**
+Command to execute docker image: **docker run -it ImageName**
