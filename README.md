@@ -1,4 +1,4 @@
-# Webdriverio Test Autoamtion - VolvoCars
+# Webdriverio Test Automation - VolvoCars
  
 This project is implemented for Web Application automation using Webdriver.IO Written in Javascript and used Visual Studio Code as an IDE.
 
