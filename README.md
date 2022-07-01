@@ -54,7 +54,7 @@ npm run test
 
 If you like to run specific test files you can add a --spec parameter:
 
-npx wdio run ./wdio.conf.js --spec <<sepcfile>>.js
+npx wdio run ./wdio.conf.js --spec sepcfile.js
 
 note: for parallel execution, uncomment the browser capabilties for other browsers in wdio.config.js 
 
