@@ -1,12 +1,15 @@
+var VolvoCars = require('../pageobjects/volvo.page');
+var resources= require('../resources/textvalidation.json');
+
 describe("Visual regression testing", () => {
     beforeEach(async () => {
-        await browser.url("https://www.volvocars.com/intl/v/car-safety/a-million-more");
+        await browser.url("/intl/v/car-safety/a-million-more");
         browser.maximizeWindow()
-        expect(browser).toHaveUrlContaining("a-million-more")
+        expect(browser).toHaveUrlContaining(resources.mainUrl)
     })
     it("Should accept cookie settings",function (){
         console.log("page opened")
-        $("#onetrust-accept-btn-handler").click()
+        VolvoCars.acceptCookie.click()
     });
 
     it("should save screenshots of campaign page", async () => {
