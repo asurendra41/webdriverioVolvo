@@ -1,6 +1,6 @@
-# Cypress Test Autoamtion - Airspace
+# Webdriverio Test Autoamtion - VolvoCars
  
-This project is implemented for Web Application automation using Cypress. Written in Javascript and used Visual Studio Code as an IDE.
+This project is implemented for Web Application automation using Webdriver.IO Written in Javascript and used Visual Studio Code as an IDE.
 
 Technologies/Tools used in building Automation
 =================================================
@@ -57,6 +57,7 @@ If you like to run specific test files you can add a --spec parameter:
 npx wdio run ./wdio.conf.js --spec <sepcfile>.js
 
 note: for parallel execution, uncomment the browser capabilties for other browsers in wdio.config.js 
+
 Reports
 =======
 install allure reports by using:  npm install @wdio/allure-reporter --save-dev
