@@ -68,9 +68,12 @@ After execution please check allure results folder. Install the Allure command-l
 
 allure generate [allure_output_dir] && allure open
 
+Execution via Docker Image 
+=========================
 **To run tests via Docker :**
 
 **Dockerfile from the root directory will create an docker image on any name specified, run that docker image for execution**
 
 Command to create docker image : **docker build -t <ImageName> .**
+
 Command to execute docker image: **docker run -it <ImageName>**
