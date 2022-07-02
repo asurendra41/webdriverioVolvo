@@ -62,7 +62,7 @@ Reports
 =======
 install allure reports by using:  npm install @wdio/allure-reporter --save-dev
 
-please check this link for more details [Aluure reports](https://webdriver.io/docs/allure-reporter)
+please check this link for more details [Allure reports](https://webdriver.io/docs/allure-reporter)
 
 After execution please check allure results folder. Install the Allure command-line tool, and process the results directory using :
 
