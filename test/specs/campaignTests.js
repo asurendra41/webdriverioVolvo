@@ -33,17 +33,16 @@ describe("Car safety campaign",function(){
     
     it("Should access Menu items",async() => {
         
-        VolvoCars.menu.click()
+        await VolvoCars.menu.click()
         await expect(VolvoCars.menupanel).toBeDisplayed()
-        
         await expect(VolvoCars.close).toBeDisplayed()
-        VolvoCars.close.click()
+        await VolvoCars.close.click()
     })
     
-    // it("Should validate our cars section",async()=> {
-    //     VolvoCars.ourcars.click()
-    //     await expect(VolvoCars.carspanel).toBeDisplayed()
-    // })
+    it("Should validate our cars section",async()=> {
+        VolvoCars.ourcars.click()
+        await expect(VolvoCars.carspanel).toBeDisplayed()
+    })
     it("Should verify page desclaimer section",async () =>{      
         expect(VolvoCars.desclaimer[0]).toHaveTextContaining(resources.desclaimer)
     })

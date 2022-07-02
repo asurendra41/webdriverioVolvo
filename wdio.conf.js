@@ -52,24 +52,31 @@ exports.config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        maxInstances: 1,
+    
+        // maxInstances can get overwritten per capability. So if you have an in-house Selenium
+        // grid with only 5 firefox instances available you can make sure that not more than
+        // 5 instances get started at a time.
+        maxInstances: 5,
         browserName: 'chrome',
         acceptInsecureCerts: true,
         'goog:chromeOptions': {
             args: ['--no-sandbox', '--disable-dev-shm-usage', '--headless']
-        }   
+        }
+        // If outputDir is provided WebdriverIO can capture driver session logs
+        // it is possible to configure which logTypes to include/exclude.
+        // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
+        // excludeDriverLogs: ['bugreport', 'server'],
     },
     // {
-    //     maxInstances: 1,
+    //     maxInstances: 3,
     //     browserName: 'firefox',
     //     acceptInsecureCerts: true,
-    //     "moz:firefoxOptions": { args: ['--headless'] }
+    //     "moz:firefoxOptions": {args:['-headless']}
     // },
     // {
-    //     maxInstances: 1,        
+    //     maxInstances: 3,        
     //     browserName: 'MicrosoftEdge',
-    //     acceptInsecureCerts: true,
-    //     "ms:edgeOptions": {args:['--headless']}
+    //     acceptInsecureCerts: true
     // }
 
 
@@ -118,16 +125,19 @@ exports.config = {
     connectionRetryCount: 3,
     //
     // Test runner services
-
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: [['docker'],
+    services: [['chromedriver','docker',],
         ['selenium-standalone'],
         ['image-comparison',
         // // The options
         {
+            savePerInstance: true,
             autoSaveBaseline: true,
+            blockOutStatusBar: true,
+            blockOutToolBar: true,
+            isHybridApp: true
         }],
     ],
     // services: [

@@ -6,10 +6,11 @@
     "desclaimer":"true stories from real people",
 
     "carsafetylink":"/intl/v/car-safety",
-    "carfeature1":"Speed cap",
-    "carfeature2":"Highway pilot",
-    "carfeature3":"monitoring cameras",
-    "carfeature4":"Care Key",
+    "carfeature":[
+        "Speed cap",
+        "Highway pilot",
+        "monitoring cameras",
+        "Care Key"],
     "decadesofInnovationheader":"Decades of innovation",
     "learnmorelink":"safety-heritage",
     "carmodel1":"XC90 Recharge"

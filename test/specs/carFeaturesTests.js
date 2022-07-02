@@ -22,15 +22,11 @@ describe("Volvo cars features and other links from campaign page",function(){
     
     it(" Should verify features of volvo cars section",async function(){
         console.log('displayed text'+await VolvoFeatures.carFeatures[0].getText())
-        await expect(VolvoFeatures.carFeatures[0]).toExist()
-        await expect(VolvoFeatures.carFeatures[0]).toHaveTextContaining(resources.carfeature1)
-        await expect(VolvoFeatures.carFeatures[1]).toExist()
-        await expect(VolvoFeatures.carFeatures[1]).toHaveTextContaining(resources.carfeature2)
-        await expect(VolvoFeatures.carFeatures[2]).toExist()
-        await expect(VolvoFeatures.carFeatures[2]).toHaveTextContaining(resources.carfeature3)
-        await expect(VolvoFeatures.carFeatures[3]).toExist()
-        await expect(VolvoFeatures.carFeatures[3]).toHaveTextContaining(resources.carfeature4)
-    })
+        for(let i=0;i<=3;i++){
+        await expect(VolvoFeatures.carFeatures[i]).toExist()
+        await expect(VolvoFeatures.carFeatures[i]).toHaveTextContaining(resources.carfeature[i])
+        }
+   })
 
     it(" Should validate decades of innovation section", async function(){
         

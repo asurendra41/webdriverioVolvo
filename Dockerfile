@@ -1,29 +1,13 @@
-FROM node:14.15.3-buster
+FROM node:16
 
-# INSTALL LIBRARIES & FONTS 
+# Install OpenJDK-11
 RUN apt-get update && \
-  apt-get install --no-install-recommends -y \
-  libgtk2.0-0 \
-  libgtk-3-0 \
-  libnotify-dev \
-  libgconf-2-4 \
-  libgbm-dev \
-  libnss3 \
-  libxss1 \
-  libasound2 \
-  libxtst6 \
-  xauth \
-  xvfb \
-  fonts-arphic-bkai00mp \
-  fonts-arphic-bsmi00lp \
-  fonts-arphic-gbsn00lp \
-  fonts-arphic-gkai00mp \
-  fonts-arphic-ukai \
-  fonts-arphic-uming \
-  ttf-wqy-zenhei \
-  ttf-wqy-microhei \
-  xfonts-wqy \
-  && rm -rf /var/lib/apt/lists/*
+    apt-get install -y openjdk-11-jre-headless && \
+    apt-get clean;
+
+# Setup JAVA_HOME -- useful for docker commandline
+ENV JAVA_HOME /usr/lib/jre/openjdk-11-jre-headless/
+RUN export JAVA_HOME
 
 # INSTALL NPM 
 RUN npm install -g npm@latest
@@ -32,8 +16,6 @@ RUN npm --version
 RUN npm install -g yarn@latest --force
 RUN yarn --version
 
-# ENVIRONMENT VARIABLES
-# good colors for most applications
 ENV TERM xterm
 # avoid million NPM install messages
 ENV npm_config_loglevel warn
@@ -49,7 +31,8 @@ RUN node -p process.versions
 RUN apt-get update
 RUN apt-get install -y fonts-liberation libappindicator3-1 xdg-utils
 
-ENV CHROME_VERSION 102.0.5005.61
+ENV CHROME_VERSION 103.0.5060.53
+
 RUN wget -O /usr/src/google-chrome-stable_current_amd64.deb "http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERSION}-1_amd64.deb" && \
   dpkg -i /usr/src/google-chrome-stable_current_amd64.deb ; \
   apt-get install -f -y && \
@@ -60,21 +43,14 @@ RUN google-chrome --version
 ENV DBUS_SESSION_BUS_ADDRESS=/dev/null
 
 # INSTALL PACKAGES
-WORKDIR /usr/wdiowithoutgrid/
+WORKDIR /usr/wdio/
 COPY package*.json ./
 COPY . .
 EXPOSE 8080
 RUN npm install
-
-# VERIFICATION
-
-# Display versions of local tools
-RUN echo  " node version:    $(node -v) \n" \
-  "npm version:     $(npm -v) \n" \
-  "yarn version:    $(yarn -v) \n" \
-  "debian version:  $(cat /etc/debian_version) \n" \
-  "user:            $(whoami) \n"
-RUN ls
+#COPY /node_modules/wdio-image-comparison-service /usr/wdio/node_modules/wdio-image-comparison-service
+#COPY /node_modules/webdriver-image-comparison /usr/wdio/node_modules/webdriver-image-comparison
+COPY package*.json ./
 
 # ON RUNNING THE IMAGE THIS COMMAND WILL BE TRIGGERED BY DEFAULT
 ENTRYPOINT ["npm", "run", "test"]
