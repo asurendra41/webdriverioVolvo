@@ -68,9 +68,29 @@ After execution please check allure results folder. Install the Allure command-l
 
 allure generate [allure_output_dir] && allure open
 
-**To run tests via Docker :**
+**=======================================================================================================**
 
-**Dockerfile from the root directory will create an docker image on any name specified, run that docker image for execution**
+# Running on a docker 
+Please follow the below instructions to run it as a docker image. 
 
-Command to create docker image : **docker build -t <ImageName> .**
-Command to execute docker image: **docker run -it <ImageName>**
+## Prerequisites 
+If you are running it on your machine, please make sure that following softwares are installed  
+-       Docker for Windows/Mac
+
+## Running our tests on Dockerized image
+Once the above softwares are successfully installed, please follow the below steps. 
+
+Run the command  
+```
+docker build -t wdiovolvo -f Dockerfile .
+```
+
+If the above step is successful, then there will be an image added to your local registry. Please make sure that there is an image with name **wdiovolvo**. To verify, pelase run the below command.
+```
+docker image ls
+```
+Running our tests on the docker image. 
+```
+docker run -it wdiovolvo
+
+```
